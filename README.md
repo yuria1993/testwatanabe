@@ -1,3 +1,38 @@
+##アプリケーション名
+お問い合わせフォーム
+
+お問い合わせしたい人が名前等を記入して、送信、修正できるアプリ
+管理システムで送信されたデータを確認することができる
+
+<img src="C:\Users\yra01\testapp\トップページ.jpeg">
+
+##作成した目的
+
+テストのため
+
+##機能一覧
+-入力画面
+-送信
+-修正
+-検索機能
+
+##使用技術
+-Laravel Framework 10.0.0
+
+##テーブル設計
+
+<img src="C:\Users\yra01\testapp\テーブル設計.png">
+
+##ER図
+<img src="C:\Users\yra01\testapp\ER図.png">
+
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
