@@ -12,7 +12,6 @@ class TestsController extends Controller
 {
     public function index()
     {
-
         return view('index');
     }
 
@@ -35,7 +34,19 @@ class TestsController extends Controller
 
     public function system(Request $request)
     {
-        $contents = $request->all();
-        return view('system', ['contents' => $contents]);
+        $contents = Contact::paginate(5);
+        $keyword = $request->keyword;
+
+        $query = Contact::query();
+
+        if (!empty($keyword)) {
+            $query->where('fullname', 'like', "%$keyword%")
+                ->where('gender', $keyword)
+                ->where('email', 'like', "%$keyword%");
+        }
+
+        $contents = $query->orderBy('created_at', 'desc')->paginate(5);
+        return view('system', ['contents' => $contents])
+            ->with('keyword', $keyword);
     }
 }

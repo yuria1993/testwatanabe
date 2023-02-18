@@ -24,6 +24,9 @@ Route::get('/send', [TestsController::class, 'send'])->name('send');
 Route::post('/send', [TestsController::class, 'send'])->name('send');
 Route::get('/system', [TestsController::class, 'system'])->name('system');
 Route::post('/system', [TestsController::class, 'system'])->name('system');
+Route::get('search', [TestsController::class, 'search'])->name('search');
+Route::post('search', [TestsController::class, 'search'])->name('search');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
