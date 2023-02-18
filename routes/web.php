@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestsController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,27 +16,14 @@ use App\Http\Controllers\TestsController;
 |
 */
 
-Route::get('/', [TestsController::class, 'index'])->name('form');
+//問い合わせ画面遷移
+Route::get('/', [ContactController::class, 'index'])->name('form');
+//確認画面遷移
+Route::get('/confirm', [ContactController::class, 'confirm'])->name('confirm');
+//問い合わせ登録
+Route::post('/send', [ContactController::class, 'send'])->name('send');
 
-Route::get('/confirm', [TestsController::class, 'confirm'])->name('confirm');
-Route::post('/confirm', [TestsController::class, 'confirm'])->name('confirm');
-Route::get('/send', [TestsController::class, 'send'])->name('send');
-
-Route::post('/send', [TestsController::class, 'send'])->name('send');
-Route::get('/system', [TestsController::class, 'system'])->name('system');
-Route::post('/system', [TestsController::class, 'system'])->name('system');
-Route::get('search', [TestsController::class, 'search'])->name('search');
-Route::post('search', [TestsController::class, 'search'])->name('search');
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__ . '/auth.php';
+//一覧画面遷移/検索処理
+Route::get('/system', [ContactController::class, 'system'])->name('system');
+//問い合わせ削除処理
+Route::delete('/system/destroy/{id}', [ContactController::class, 'destroy'])->name('destroy');
