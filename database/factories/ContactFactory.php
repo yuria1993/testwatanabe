@@ -22,7 +22,7 @@ class ContactFactory extends Factory
             'email' => $this->faker->email,
             'postcode' => substr_replace($this->faker->postcode, '-', 3, 0),
             'address' => $this->faker->address,
-            'building_name' => null,
+            'building_name' => $this->faker->secondaryAddress,
             'opinion' => $this->faker->realText(120)
         ];
     }
