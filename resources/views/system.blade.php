@@ -32,8 +32,7 @@
                     <div class="mt-3">
                         <p>登録日</p>
                         <div class="flex pb-2">
-                            <input type="date" name="created_at_from" value="{{old('created_at_from')}}"
-                                   class="rounded-md">
+                            <input type="date" name="created_at_from" value="{{old('created_at_from')}}" class="rounded-md">
                             <p class="text-lg p-3"> ー</p>
                             <input type="date" name="created_at_to" value="{{old('created_at_to')}}" class="rounded-md">
                         </div>
@@ -47,8 +46,7 @@
 
                     {{--検索--}}
                     <div class="flex justify-center py-3">
-                        <button type="submit"
-                                class="bg-black text-white font-bold py-2 px-4 rounded">検索
+                        <button type="submit" class="bg-black text-white font-bold py-2 px-4 rounded">検索
                         </button>
                     </div>
 
@@ -83,26 +81,25 @@
 
 
                     @foreach($contents->items() as $content)
-                        <tr>
-                            <td>{{$content->fullname}}</td>
-                            <td>
-                                @if($content->gender===1)
-                                    男性
-                                @elseif($content->gender===2)
-                                    女性
-                                @endif
-                            </td>
-                            <td>{{$content->email}}</td>
-                            <td class="w-1/2">
-                                <span title="{{$content->opinion}}" class="short">{{$content->opinion}}</span>
-                            </td>
-                            <td>
-                                <button class="bg-black text-white font-bold py-2 px-4 rounded"
-                                        formaction="{{route('destroy', ['id' => $content->id])}}" type="submit">
-                                    削除
-                                </button>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>{{$content->fullname}}</td>
+                        <td>
+                            @if($content->gender===1)
+                            男性
+                            @elseif($content->gender===2)
+                            女性
+                            @endif
+                        </td>
+                        <td>{{$content->email}}</td>
+                        <td class="w-1/2">
+                            <span title="{{$content->opinion}}" class="short">{{$content->opinion}}</span>
+                        </td>
+                        <td>
+                            <button class="bg-black text-white font-bold py-2 px-4 rounded" formaction="{{route('destroy', ['id' => $content->id])}}" type="submit">
+                                削除
+                            </button>
+                        </td>
+                    </tr>
                     @endforeach
                 </table>
             </form>
@@ -111,31 +108,30 @@
     </div>
 
     <script>
-        // テキストをトリミングする要素
         const selector = document.getElementsByClassName('short');
-        // 制限する文字数
+
         const wordCount = 25;
-        // 文末に追加したい文字
+
         const clamp = '…';
 
         for (let i = 0; i < selector.length; i++) {
-            // 文字数を超えたら
+
             if (selector[i].innerText.length > wordCount) {
-                let str = selector[i].innerText; // 文字数を取得
-                str = str.substring(0, (wordCount - 1)); // 1文字削る
-                selector[i].innerText = str + clamp; // 文末にテキストを足す
+                let str = selector[i].innerText;
+                str = str.substring(0, (wordCount - 1));
+                selector[i].innerText = str + clamp;
             }
         }
 
-        document.querySelectorAll('.short').forEach(function (opinion) {
-            opinion.addEventListener('mouseenter', function (e) {
+        document.querySelectorAll('.short').forEach(function(opinion) {
+            opinion.addEventListener('mouseenter', function(e) {
                 const title = e.target.title;
                 const value = e.target.innerText;
 
                 e.target.title = value;
                 e.target.innerText = title;
             });
-            opinion.addEventListener('mouseout', function (e) {
+            opinion.addEventListener('mouseout', function(e) {
                 const title = e.target.title;
                 const value = e.target.innerText;
 

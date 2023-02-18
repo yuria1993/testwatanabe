@@ -41,15 +41,15 @@ class ContactController extends Controller
             ->when(!empty($searchParams), function (Builder $builder) use ($searchParams) {
                 $builder->when(
                     !is_null(Arr::get($searchParams, 'fullname')),
-                    fn(Builder $builder) => $builder->where('fullname', 'LIKE', "%" . $searchParams['fullname'] . "%")
+                    fn (Builder $builder) => $builder->where('fullname', 'LIKE', "%" . $searchParams['fullname'] . "%")
                 );
                 $builder->when(
                     !is_null(Arr::get($searchParams, 'gender')),
-                    fn(Builder $builder) => $builder->where('gender', $searchParams['gender'])
+                    fn (Builder $builder) => $builder->where('gender', $searchParams['gender'])
                 );
                 $builder->when(
                     !is_null(Arr::get($searchParams, 'created_at_from')),
-                    fn(Builder $builder) => $builder->where(
+                    fn (Builder $builder) => $builder->where(
                         'created_at',
                         '>=',
                         CarbonImmutable::parse(
@@ -59,7 +59,7 @@ class ContactController extends Controller
                 );
                 $builder->when(
                     !is_null(Arr::get($searchParams, 'created_at_to')),
-                    fn(Builder $builder) => $builder->where(
+                    fn (Builder $builder) => $builder->where(
                         'created_at',
                         '<=',
                         CarbonImmutable::parse(
@@ -69,7 +69,7 @@ class ContactController extends Controller
                 );
                 $builder->when(
                     !is_null(Arr::get($searchParams, 'email')),
-                    fn(Builder $builder) => $builder->where('email', 'LIKE', '%' . $searchParams['email'] . '%')
+                    fn (Builder $builder) => $builder->where('email', 'LIKE', '%' . $searchParams['email'] . '%')
                 );
             })
             ->paginate(10);

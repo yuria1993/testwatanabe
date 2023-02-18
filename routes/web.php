@@ -16,14 +16,14 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-//問い合わせ画面遷移
+
 Route::get('/', [ContactController::class, 'index'])->name('form');
-//確認画面遷移
+
 Route::get('/confirm', [ContactController::class, 'confirm'])->name('confirm');
-//問い合わせ登録
+
 Route::post('/send', [ContactController::class, 'send'])->name('send');
 
-//一覧画面遷移/検索処理
+
 Route::get('/system', [ContactController::class, 'system'])->name('system');
-//問い合わせ削除処理
+
 Route::delete('/system/destroy/{id}', [ContactController::class, 'destroy'])->name('destroy');
