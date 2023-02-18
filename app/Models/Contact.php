@@ -14,9 +14,4 @@ class Contact extends Model
     protected $fillable = [
         'fullname', 'gender', 'email', 'building_name', 'postcode', 'address', 'opinion'
     ];
-
-    public function content()
-    {
-        return $this->hasMany(Contact::class);
-    }
 }
