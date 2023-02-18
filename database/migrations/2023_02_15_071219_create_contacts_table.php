@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->char('postcode', 8);
             $table->string('address', 255);
-            $table->string('building_name', 255);
+            $table->string('building_name', 255)->nullable();
             $table->text('opinion');
             $table->timestamps();
         });
